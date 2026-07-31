@@ -5,63 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng nhập – Roblox</title>
     <style>
-        /* ===== RESET ===== */
-        * { margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', 'Roboto', Arial, sans-serif; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+        }
         body {
             background: #1a1a2e;
+            background-image: url('https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:format(webp):quality(75)/roblox_cover_be7d1828cd.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             padding: 20px;
+            margin: 0;
         }
+        /* ===== BOX XÁM ĐẬM ===== */
         .login-box {
-            background: #ffffff;
+            background: #2a2a2a;  /* Màu xám đậm như ảnh */
             max-width: 420px;
             width: 100%;
-            padding: 40px 35px 30px;
-            border-radius: 16px;
-            box-shadow: 0 12px 40px rgba(0,0,0,0.6);
-            text-align: center;
+            padding: 32px 28px 28px;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+            text-align: left;
+            border: 1px solid #444;
         }
         .logo {
-            font-size: 38px;
+            font-size: 36px;
             font-weight: 900;
-            color: #1a1a2e;
+            color: #ffffff;
+            text-align: center;
             margin-bottom: 4px;
-            letter-spacing: -0.5px;
         }
         .logo span { color: #e03a3a; }
         .subtitle {
-            color: #666;
+            color: #aaa;
             font-size: 15px;
-            margin-bottom: 25px;
+            text-align: center;
+            margin-bottom: 24px;
+            font-weight: 400;
         }
         .input-group {
-            text-align: left;
             margin-bottom: 18px;
         }
         .input-group label {
             display: block;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
-            color: #333;
-            margin-bottom: 5px;
+            color: #ddd;
+            margin-bottom: 4px;
         }
         .input-group input {
             width: 100%;
-            padding: 13px 16px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
+            padding: 12px 14px;
+            border: 1px solid #555;
+            border-radius: 6px;
             font-size: 15px;
-            background: #f9f9f9;
-            transition: 0.2s;
+            background: #1e1e1e;
+            color: #fff;
             outline: none;
+            transition: 0.2s;
         }
         .input-group input:focus {
             border-color: #0070d1;
-            background: #fff;
-            box-shadow: 0 0 0 3px rgba(0,112,209,0.15);
+            background: #2a2a2a;
+            box-shadow: 0 0 0 3px rgba(0,112,209,0.2);
         }
         .btn-login {
             width: 100%;
@@ -69,72 +82,121 @@
             background: #0070d1;
             color: #fff;
             border: none;
-            border-radius: 8px;
+            border-radius: 6px;
             font-size: 18px;
             font-weight: 700;
             cursor: pointer;
             transition: 0.2s;
-            margin-top: 6px;
+            margin-top: 4px;
         }
         .btn-login:hover { background: #005bb5; }
         .btn-login:active { transform: scale(0.97); }
         .error-msg {
-            color: #d32f2f;
+            color: #ff6b6b;
             font-size: 13px;
-            margin: 8px 0 0;
-            display: block;
-            text-align: left;
-            background: #ffebee;
+            margin: 10px 0 0;
+            background: #3a1a1a;
             padding: 8px 12px;
             border-radius: 6px;
         }
         .links {
-            margin-top: 20px;
+            margin-top: 18px;
             font-size: 13px;
-            color: #555;
+            color: #aaa;
+        }
+        .links .row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 4px;
         }
         .links a {
-            color: #0070d1;
+            color: #8ab4f8;
             text-decoration: none;
             font-weight: 500;
         }
         .links a:hover { text-decoration: underline; }
-        .links .divider { color: #ccc; margin: 0 5px; }
-        .links .row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 6px;
-            flex-wrap: wrap;
-        }
         .quick-login {
             margin-top: 12px;
-            border-top: 1px solid #eee;
+            border-top: 1px solid #444;
             padding-top: 14px;
             font-size: 13px;
         }
-        .quick-login a { color: #0070d1; text-decoration: none; font-weight: 500; }
-        .copyright {
-            margin-top: 24px;
+        .quick-login a {
+            color: #8ab4f8;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .register-link {
+            margin-top: 16px;
+            font-size: 14px;
+            color: #ccc;
+            text-align: center;
+        }
+        .register-link a {
+            color: #8ab4f8;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        /* ===== TAB TRÊN ===== */
+        .top-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 16px;
             font-size: 12px;
             color: #aaa;
-            border-top: 1px solid #eee;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #444;
+        }
+        .top-tabs a {
+            color: #aaa;
+            text-decoration: none;
+        }
+        .top-tabs a:hover { text-decoration: underline; }
+        /* ===== TAB DƯỚI ===== */
+        .footer-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 20px;
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 20px;
+            border-top: 1px solid #444;
             padding-top: 16px;
         }
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px 16px;
-            font-size: 12px;
-            color: #888;
-            margin-top: 10px;
+        .footer-tabs a {
+            color: #aaa;
+            text-decoration: none;
         }
-        .footer-links a { color: #888; text-decoration: none; }
-        .footer-links a:hover { text-decoration: underline; }
+        .footer-tabs a:hover { text-decoration: underline; }
+        .copyright {
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+            margin-top: 12px;
+        }
+        @media (max-width: 480px) {
+            .login-box { padding: 24px 18px; }
+            .logo { font-size: 30px; }
+        }
     </style>
 </head>
 <body>
     <div class="login-box">
+        <!-- TAB TRÊN -->
+        <div class="top-tabs">
+            <a href="#">Đăng ký</a>
+            <a href="#">Về chúng tôi</a>
+            <a href="#">Việc làm</a>
+            <a href="#">Trung tâm tin tức</a>
+            <a href="#">Cha mẹ</a>
+            <a href="#">Mua thẻ quà tặng</a>
+            <a href="#">Trợ giúp</a>
+        </div>
+
         <div class="logo">R<span>o</span>blox</div>
         <div class="subtitle">Đăng nhập để tiếp tục</div>
 
@@ -166,22 +228,21 @@
             <a href="#">Đăng nhập nhanh</a>
         </div>
 
-        <div style="margin-top: 16px; font-size: 14px; color: #333;">
-            Bạn không có tài khoản? <a href="#" style="color:#0070d1; font-weight:600; text-decoration:none;">Đăng ký</a>
+        <div class="register-link">
+            Bạn không có tài khoản? <a href="#">Đăng ký</a>
         </div>
 
-        <div class="copyright">
-            <div class="footer-links">
-                <a href="#">Đăng ký</a>
-                <a href="#">Về chúng tôi</a>
-                <a href="#">Việc làm</a>
-                <a href="#">Trung tâm tin tức</a>
-                <a href="#">Cha mẹ</a>
-                <a href="#">Mua thẻ quà tặng</a>
-                <a href="#">Trợ giúp</a>
-            </div>
-            <div style="margin-top: 10px;">© 2026 Roblox Corporation</div>
+        <!-- TAB DƯỚI -->
+        <div class="footer-tabs">
+            <a href="#">Đăng ký</a>
+            <a href="#">Về chúng tôi</a>
+            <a href="#">Việc làm</a>
+            <a href="#">Trung tâm tin tức</a>
+            <a href="#">Cha mẹ</a>
+            <a href="#">Mua thẻ quà tặng</a>
+            <a href="#">Trợ giúp</a>
         </div>
+        <div class="copyright">© 2026 Roblox Corporation</div>
     </div>
 </body>
-    </html>
+</html>
