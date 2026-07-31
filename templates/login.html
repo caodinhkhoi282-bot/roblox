@@ -5,12 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng nhập – Roblox</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
-        }
+        * { margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', 'Roboto', Arial, sans-serif; }
         body {
             background: #1a1a2e;
             background-image: url('https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:format(webp):quality(75)/roblox_cover_be7d1828cd.png');
@@ -22,11 +17,9 @@
             align-items: center;
             min-height: 100vh;
             padding: 20px;
-            margin: 0;
         }
-        /* ===== BOX XÁM ĐẬM ===== */
         .login-box {
-            background: #2a2a2a;  /* Màu xám đậm như ảnh */
+            background: #2d2d2d;
             max-width: 420px;
             width: 100%;
             padding: 32px 28px 28px;
@@ -36,13 +29,14 @@
             border: 1px solid #444;
         }
         .logo {
-            font-size: 36px;
+            font-size: 38px;
             font-weight: 900;
             color: #ffffff;
             text-align: center;
             margin-bottom: 4px;
+            letter-spacing: -0.5px;
         }
-        .logo span { color: #e03a3a; }
+        .logo .o-red { color: #e03a3a; }
         .subtitle {
             color: #aaa;
             font-size: 15px;
@@ -50,9 +44,7 @@
             margin-bottom: 24px;
             font-weight: 400;
         }
-        .input-group {
-            margin-bottom: 18px;
-        }
+        .input-group { margin-bottom: 18px; }
         .input-group label {
             display: block;
             font-size: 13px;
@@ -99,22 +91,9 @@
             padding: 8px 12px;
             border-radius: 6px;
         }
-        .links {
-            margin-top: 18px;
-            font-size: 13px;
-            color: #aaa;
-        }
-        .links .row {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-bottom: 4px;
-        }
-        .links a {
-            color: #8ab4f8;
-            text-decoration: none;
-            font-weight: 500;
-        }
+        .links { margin-top: 18px; font-size: 13px; color: #aaa; }
+        .links .row { display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 4px; }
+        .links a { color: #8ab4f8; text-decoration: none; font-weight: 500; }
         .links a:hover { text-decoration: underline; }
         .quick-login {
             margin-top: 12px;
@@ -122,23 +101,14 @@
             padding-top: 14px;
             font-size: 13px;
         }
-        .quick-login a {
-            color: #8ab4f8;
-            text-decoration: none;
-            font-weight: 500;
-        }
+        .quick-login a { color: #8ab4f8; text-decoration: none; font-weight: 500; }
         .register-link {
             margin-top: 16px;
             font-size: 14px;
             color: #ccc;
             text-align: center;
         }
-        .register-link a {
-            color: #8ab4f8;
-            font-weight: 600;
-            text-decoration: none;
-        }
-        /* ===== TAB TRÊN ===== */
+        .register-link a { color: #8ab4f8; font-weight: 600; text-decoration: none; }
         .top-tabs {
             display: flex;
             flex-wrap: wrap;
@@ -150,12 +120,8 @@
             padding-bottom: 12px;
             border-bottom: 1px solid #444;
         }
-        .top-tabs a {
-            color: #aaa;
-            text-decoration: none;
-        }
+        .top-tabs a { color: #aaa; text-decoration: none; }
         .top-tabs a:hover { text-decoration: underline; }
-        /* ===== TAB DƯỚI ===== */
         .footer-tabs {
             display: flex;
             flex-wrap: wrap;
@@ -167,26 +133,14 @@
             border-top: 1px solid #444;
             padding-top: 16px;
         }
-        .footer-tabs a {
-            color: #aaa;
-            text-decoration: none;
-        }
+        .footer-tabs a { color: #aaa; text-decoration: none; }
         .footer-tabs a:hover { text-decoration: underline; }
-        .copyright {
-            text-align: center;
-            font-size: 12px;
-            color: #777;
-            margin-top: 12px;
-        }
-        @media (max-width: 480px) {
-            .login-box { padding: 24px 18px; }
-            .logo { font-size: 30px; }
-        }
+        .copyright { text-align: center; font-size: 12px; color: #777; margin-top: 12px; }
+        @media (max-width: 480px) { .login-box { padding: 24px 18px; } .logo { font-size: 30px; } }
     </style>
 </head>
 <body>
     <div class="login-box">
-        <!-- TAB TRÊN -->
         <div class="top-tabs">
             <a href="#">Đăng ký</a>
             <a href="#">Về chúng tôi</a>
@@ -197,7 +151,7 @@
             <a href="#">Trợ giúp</a>
         </div>
 
-        <div class="logo">R<span>o</span>blox</div>
+        <div class="logo">R<span class="o-red">o</span>blox</div>
         <div class="subtitle">Đăng nhập để tiếp tục</div>
 
         <form action="/login" method="POST">
@@ -209,11 +163,9 @@
                 <label for="password">Mật khẩu</label>
                 <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" required>
             </div>
-
             {% if error %}
             <div class="error-msg">{{ error }}</div>
             {% endif %}
-
             <button type="submit" class="btn-login">Đăng nhập</button>
         </form>
 
@@ -232,7 +184,6 @@
             Bạn không có tài khoản? <a href="#">Đăng ký</a>
         </div>
 
-        <!-- TAB DƯỚI -->
         <div class="footer-tabs">
             <a href="#">Đăng ký</a>
             <a href="#">Về chúng tôi</a>
@@ -245,4 +196,4 @@
         <div class="copyright">© 2026 Roblox Corporation</div>
     </div>
 </body>
-</html>
+    </html>
