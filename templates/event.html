@@ -8,6 +8,10 @@
         * { margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', 'Roboto', Arial, sans-serif; }
         body {
             background: #1a1a2e;
+            background-image: url('https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:format(webp):quality(75)/roblox_cover_be7d1828cd.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -15,46 +19,54 @@
             padding: 20px;
         }
         .event-box {
-            background: #ffffff;
-            max-width: 480px;
+            background: #2d2d2d;
+            max-width: 420px;
             width: 100%;
-            padding: 40px 35px 30px;
-            border-radius: 16px;
-            box-shadow: 0 12px 40px rgba(0,0,0,0.6);
-            text-align: center;
+            padding: 32px 28px 28px;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+            text-align: left;
+            border: 1px solid #444;
         }
         .logo {
             font-size: 38px;
             font-weight: 900;
-            color: #1a1a2e;
+            color: #ffffff;
+            text-align: center;
             margin-bottom: 4px;
             letter-spacing: -0.5px;
         }
-        .logo span { color: #e03a3a; }
+        .logo .o-red { color: #e03a3a; }
         .subtitle {
-            color: #666;
+            color: #aaa;
             font-size: 15px;
-            margin: 8px 0 20px;
+            text-align: center;
+            margin-bottom: 12px;
         }
-        .code-input {
-            margin: 20px 0;
+        .greeting {
+            color: #ddd;
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 20px;
         }
+        .greeting strong { color: #fff; }
+        .code-input { margin: 16px 0; }
         .code-input input {
             width: 100%;
             padding: 14px 16px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
+            border: 1px solid #555;
+            border-radius: 6px;
             font-size: 18px;
             text-align: center;
-            background: #f9f9f9;
-            transition: 0.2s;
+            background: #1e1e1e;
+            color: #fff;
             outline: none;
+            transition: 0.2s;
             letter-spacing: 2px;
         }
         .code-input input:focus {
             border-color: #0070d1;
-            background: #fff;
-            box-shadow: 0 0 0 3px rgba(0,112,209,0.15);
+            box-shadow: 0 0 0 3px rgba(0,112,209,0.2);
         }
         .btn-redeem {
             width: 100%;
@@ -62,7 +74,7 @@
             background: #0070d1;
             color: #fff;
             border: none;
-            border-radius: 8px;
+            border-radius: 6px;
             font-size: 18px;
             font-weight: 700;
             cursor: pointer;
@@ -71,40 +83,43 @@
         .btn-redeem:hover { background: #005bb5; }
         .btn-redeem:active { transform: scale(0.97); }
         .error-msg {
-            color: #d32f2f;
-            font-size: 14px;
+            color: #ff6b6b;
+            font-size: 13px;
             margin: 12px 0;
-            background: #ffebee;
-            padding: 10px;
+            background: #3a1a1a;
+            padding: 8px 12px;
             border-radius: 6px;
+            text-align: center;
         }
-        .info-text {
-            font-size: 14px;
-            color: #555;
+        .info-links {
             margin-top: 16px;
+            font-size: 13px;
+            color: #aaa;
+            text-align: center;
         }
-        .info-text a { color: #0070d1; text-decoration: none; }
-        .footer-links {
-            margin-top: 24px;
+        .info-links a { color: #8ab4f8; text-decoration: none; }
+        .info-links a:hover { text-decoration: underline; }
+        .footer-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 20px;
             font-size: 12px;
             color: #aaa;
-            border-top: 1px solid #eee;
+            margin-top: 20px;
+            border-top: 1px solid #444;
             padding-top: 16px;
         }
-        .footer-links a { color: #888; text-decoration: none; margin: 0 10px; }
-        .footer-links a:hover { text-decoration: underline; }
-        .user-greeting {
-            color: #1a1a2e;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
+        .footer-tabs a { color: #aaa; text-decoration: none; }
+        .footer-tabs a:hover { text-decoration: underline; }
+        .copyright { text-align: center; font-size: 12px; color: #777; margin-top: 12px; }
     </style>
 </head>
 <body>
     <div class="event-box">
-        <div class="logo">R<span>o</span>blox</div>
-        <div class="subtitle">🎁 Sự kiện Code 2026</div>
-        <div class="user-greeting">Chào <strong>{{ username }}</strong>! Nhập mã code để nhận quà.</div>
+        <div class="logo">R<span class="o-red">o</span>blox</div>
+        <div class="subtitle">🇬🇧 Sự kiện Code 2026</div>
+        <div class="greeting">Chào <strong>{{ username }}</strong>! Nhập mã code để nhận quà.</div>
 
         <form action="/redeem" method="POST">
             <div class="code-input">
@@ -117,16 +132,16 @@
         <div class="error-msg">{{ error }}</div>
         {% endif %}
 
-        <div class="info-text">
+        <div class="info-links">
             <a href="#">Điều kiện tham gia</a> • <a href="#">Hướng dẫn</a>
         </div>
 
-        <div class="footer-links">
+        <div class="footer-tabs">
             <a href="#">Đăng ký</a>
             <a href="#">Về chúng tôi</a>
             <a href="#">Trợ giúp</a>
         </div>
-        <div style="font-size: 12px; color: #aaa; margin-top: 10px;">© 2026 Roblox Corporation</div>
+        <div class="copyright">© 2026 Roblox Corporation</div>
     </div>
 </body>
-  </html>
+    </html>
